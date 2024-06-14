@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.sabanciuniv.activityforecast.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main">
+        <action
+            android:id="@+id/mainActivity_to_selectLocationActivity"
+            app:destination="@id/selectLocationActivity"/>
+    </activity>
+
+    <activity
+        android:id="@+id/selectLocationActivity"
+        android:name="com.sabanciuniv.activityforecast.SelectLocationActivity"
+        android:label="activity_select_location"
+        tools:layout="@layout/activity_select_location">
+        <action
+            android:id="@+id/selectLocationActivity_to_weatherDisplayActivity"
+            app:destination="@id/weatherDisplayActivity"/>
+        <action
+            android:id="@+id/selectLocationActivity_back_to_mainActivity"
+            app:destination="@id/mainActivity"
+            app:popUpTo="@id/mainActivity"
+            app:popUpToInclusive="true"/>
+    </activity>
+
+    <activity
+        android:id="@+id/weatherDisplayActivity"
+        android:name="com.sabanciuniv.activityforecast.WeatherDisplayActivity"
+        android:label="activity_weather_display"
+        tools:layout="@layout/activity_weather_display">
+        <action
+            android:id="@+id/weatherDisplayActivity_to_activitiesDisplayActivity"
+            app:destination="@id/activitiesDisplayActivity"/>
+        <action
+            android:id="@+id/weatherDisplayActivity_back_to_selectLocationActivity"
+            app:destination="@id/selectLocationActivity"/>
+    </activity>
+
+    <activity
+        android:id="@+id/activitiesDisplayActivity"
+        android:name="com.sabanciuniv.activityforecast.ActivitiesDisplayActivity"
+        android:label="activity_activities_display"
+        tools:layout="@layout/activity_activities_display">
+        <action
+            android:id="@+id/activitiesDisplayActivity_to_indoorActivitiesFragment"
+            app:destination="@id/indoorActivitiesFragment"/>
+        <action
+            android:id="@+id/activitiesDisplayActivity_to_outdoorActivitiesFragment"
+            app:destination="@id/outdoorActivitiesFragment"/>
+        <action
+            android:id="@+id/activitiesDisplayActivity_back_to_weatherDisplayActivity"
+            app:destination="@id/weatherDisplayActivity"/>
+    </activity>
+
+    <fragment
+        android:id="@+id/indoorActivitiesFragment"
+        android:name="com.sabanciuniv.activityforecast.IndoorActivitiesFragment"
+        android:label="Indoor Activities Fragment">
+        <action
+            android:id="@+id/indoorActivitiesFragment_to_activityDetailActivity"
+            app:destination="@id/activityDetailActivity"/>
+        <action
+            android:id="@+id/indoorActivitiesFragment_back_to_activitiesDisplayActivity"
+            app:destination="@id/activitiesDisplayActivity"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/outdoorActivitiesFragment"
+        android:name="com.sabanciuniv.activityforecast.OutdoorActivitiesFragment"
+        android:label="Outdoor Activities Fragment">
+        <action
+            android:id="@+id/outdoorActivitiesFragment_to_activityDetailActivity"
+            app:destination="@id/activityDetailActivity"/>
+        <action
+            android:id="@+id/outdoorActivitiesFragment_back_to_activitiesDisplayActivity"
+            app:destination="@id/activitiesDisplayActivity"/>
+    </fragment>
+
+    <activity
+        android:id="@+id/activityDetailActivity"
+        android:name="com.sabanciuniv.activityforecast.ActivityDetailActivity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail">
+        <action
+            android:id="@+id/activityDetailActivity_to_reviewDisplayActivity"
+            app:destination="@id/reviewDisplayActivity"/>
+        <action
+            android:id="@+id/activityDetailActivity_back_to_indoorActivitiesFragment"
+            app:destination="@id/indoorActivitiesFragment"/>
+        <action
+            android:id="@+id/activityDetailActivity_back_to_outdoorActivitiesFragment"
+            app:destination="@id/outdoorActivitiesFragment"
+            app:popUpTo="@id/outdoorActivitiesFragment"
+            app:popUpToInclusive="true"/>
+    </activity>
+
+    <activity
+        android:id="@+id/reviewDisplayActivity"
+        android:name="com.sabanciuniv.activityforecast.ReviewDisplayActivity"
+        android:label="activity_review_display"
+        tools:layout="@layout/activity_review_display">
+        <action
+            android:id="@+id/reviewDisplayActivity_to_postReviewActivity"
+            app:destination="@id/postReviewActivity"/>
+        <action
+            android:id="@+id/reviewDisplayActivity_back_to_activityDetailActivity"
+            app:destination="@id/activityDetailActivity"/>
+    </activity>
+
+    <activity
+        android:id="@+id/postReviewActivity"
+        android:name="com.sabanciuniv.activityforecast.PostReviewActivity"
+        android:label="activity_post_review"
+        tools:layout="@layout/activity_post_review">
+        <action
+            android:id="@+id/postReviewActivity_to_reviewDisplayActivity"
+            app:destination="@id/reviewDisplayActivity"/>
+    </activity>
+
+</navigation>
